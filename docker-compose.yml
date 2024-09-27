@@ -1,0 +1,12 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.6
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - .docker/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+    ports:
+      - 8085:8080
+    command: start-dev
